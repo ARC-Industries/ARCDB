@@ -1,0 +1,22 @@
+{
+  "name": "arcdb",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARC-Industries/ARCDB.git"
+  },
+  "author": "RyanTLG, CosmoOrSth",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ARC-Industries/ARCDB/issues"
+  },
+  "homepage": "https://github.com/ARC-Industries/ARCDB#readme",
+  "devDependencies": {
+    "electron": "^19.0.0"
+  }
+}
