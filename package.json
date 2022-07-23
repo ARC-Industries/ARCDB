@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/ARC-Industries/ARCDB#readme",
   "devDependencies": {
-    "electron": "^19.0.0"
+    "electron": "^19.0.9"
   }
 }
