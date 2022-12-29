@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "."
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/ARC-Industries/ARCDB#readme",
   "devDependencies": {
-    "electron": "^19.0.9"
+    "electron": "^21.3.0"
+  },
+  "dependencies": {
+    "mongodb": "^4.12.0",
+    "node-fetch": "^3.3.0"
   }
 }
