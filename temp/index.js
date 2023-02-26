@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 const path = require('path')
-const checkArgs = require('./functions/checkArgs');
+const checkArgs = require('./temp/functions/checkArgs');
 const settings = require('./settings.json')
 
 process.title = 'ARCDB'
@@ -10,7 +10,7 @@ const createWindow = () => {
     const win = new BrowserWindow({
         width: settings.width,
         height: settings.height,
-        icon: __dirname + '/assets/arcc.ico',
+        icon: __dirname + '/assets/ARC-logo-BIG.png',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,

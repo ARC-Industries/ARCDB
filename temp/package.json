@@ -1,0 +1,26 @@
+{
+  "name": "arcdb",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARC-Industries/ARCDB.git"
+  },
+  "author": "RyanTLG, CosmoOrSth",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ARC-Industries/ARCDB/issues"
+  },
+  "homepage": "https://github.com/ARC-Industries/ARCDB#readme",
+  "devDependencies": {
+    "electron": "^21.3.0"
+  },
+  "dependencies": {
+    "mongodb": "^4.12.0",
+    "node-fetch": "^3.3.0"
+  }
+}
