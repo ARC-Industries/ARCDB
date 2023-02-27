@@ -10,6 +10,7 @@
                     "Core": "./app/src/core",
                     "Pages": "./app/src/pages",
                     "Redux": "./app/src/redux",
+                    "Functions": "./app/src/functions",
                     "I18n": "./app/localization",
                     "Images": "./resources/images"
                 }

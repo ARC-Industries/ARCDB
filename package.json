@@ -15,7 +15,7 @@
     "pack": "electron-builder --dir",
     "dist": "npm run test && npm run prod-build && electron-builder",
     "dist-mac": "npm run test && npm run prod-build && electron-builder --mac",
-    "dist-linux": "npm run test && npm run prod-build && electron-builder --linux",
+    "dist-linux": "npm run prod-build && electron-builder --linux",
     "dist-windows": "npm run prod-build && electron-builder --windows",
     "dist-all": "npm run test && npm run prod-build && electron-builder --mac --linux --windows",
     "test": "mocha"
@@ -49,7 +49,8 @@
         "rpm",
         "snap",
         "AppImage"
-      ]
+      ],
+      "maintainer": "Ryan Kotzé"
     }
   },
   "repository": {
@@ -117,6 +118,8 @@
   "dependencies": {
     "@loadable/component": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.3",
+    "@userfront/core": "^0.4.7",
+    "bootstrap": "^5.2.3",
     "bulma": "^0.9.4",
     "easy-redux-undo": "^1.0.5",
     "electron-devtools-installer": "^3.2.0",
@@ -125,6 +128,7 @@
     "i18next-fs-backend": "^1.1.4",
     "lodash": "4.17.21",
     "lodash.merge": "^4.6.2",
+    "mongodb": "^5.1.0",
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

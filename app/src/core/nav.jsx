@@ -13,6 +13,7 @@ class Nav extends React.Component {
     this.state = {
       mobileMenuActive: false,
       licenseModalActive: false,
+      isLoggedIn: false,
 
       // license-specific
       licenseValid: false,
@@ -25,6 +26,13 @@ class Nav extends React.Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.toggleLicenseModal = this.toggleLicenseModal.bind(this);
     this.navigate = this.navigate.bind(this);
+  }
+
+  login = () => {
+    this.setState({ isLoggedIn: true })
+  };
+  logout = () => {
+    this.setState({ isLoggedIn: false })
   }
 
   componentWillUnmount() {
@@ -195,13 +203,13 @@ class Nav extends React.Component {
             <a
               className="navbar-item"
               onClick={() => this.navigate(ROUTES.LOGIN)}>
-              Home
+              Homer
             </a>
 
             <a
               className="navbar-item"
               onClick={() => this.navigate(ROUTES.ABOUT)}>
-              About
+              Marge
             </a>
 
             <div className="navbar-item has-dropdown is-hoverable">

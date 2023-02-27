@@ -1,11 +1,10 @@
-exports = async function(uname, passwd) {
-    
-    console.log('foo')
-    define(async function (require) {
-        const { MongoClient } = require('mongodb');
+console.info("loginHandler called")
+const { MongoClient } = require("mongodb")
 
+module.exports.checkMongo = async function checkMongo(uname, passwd) {
         const uri = `mongodb+srv://${uname}:${passwd}@projectdb.fzsksa1.mongodb.net/?retryWrites=true&w=majority`;
         const client = new MongoClient(uri);
+        console.info("checkMongo touched")
         try {
             // connect the client to the server 
             console.info('connecting')
@@ -22,5 +21,4 @@ exports = async function(uname, passwd) {
             console.error(err)
             return 'error', err
         }
-    })
 }

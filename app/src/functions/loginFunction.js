@@ -5,7 +5,6 @@ console.log('script executed')
 // });
 
 exports = async function() {
-    define(function (require) {
         const checkLogin = require('./checkLogin')
         const login = document.getElementById("login")
         console.log('sad')
@@ -21,7 +20,7 @@ exports = async function() {
             };      
             ipcRenderer.send("authenticated")
         })
-    })
+    
     // Authenticate user and create a new session
     
 
