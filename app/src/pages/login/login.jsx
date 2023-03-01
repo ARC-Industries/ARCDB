@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ROUTES from "Constants/routes";
 import { Link } from "react-router-dom";
 import "./login.css";
-import Userfront from "@userfront/core";
+// import Userfront from "@userfront/core";
 import { checkMongo } from "Functions/loginHandler"
 
 // Initialize Userfront Core JS
-Userfront.init("test123");
+// Userfront.init("test123");
 import Alert from "./errorHandler"
 // import { MongoClient } from "mongodb";
 
@@ -40,7 +40,7 @@ class Login extends React.Component {
     event.preventDefault();
     // Reset the alert to empty
     this.setAlertMessage();
-    checkMongo(this.state.Username, this.state.password)
+    // checkMongo(this.state.Username, this.state.password)
     // Userfront.login({
     //   method: "password",
     //   Username: this.state.Username,
@@ -63,7 +63,7 @@ class Login extends React.Component {
           />
           <form onSubmit={this.handleSubmit}>
             <label>
-              Email or username
+              username
               <input
                 name="Username"
                 type="username"
@@ -89,5 +89,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-// https://supertokens.com/blog/building-a-login-screen-with-react-and-bootstrap
-//we have an issue
