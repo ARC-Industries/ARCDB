@@ -40,7 +40,7 @@ class Login extends React.Component {
     event.preventDefault();
     // Reset the alert to empty
     this.setAlertMessage();
-    // checkMongo(this.state.Username, this.state.password)
+    checkMongo(this.state.Username, this.state.password, window.api.MongoClient(uri))
     // Userfront.login({
     //   method: "password",
     //   Username: this.state.Username,
