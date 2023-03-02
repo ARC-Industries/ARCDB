@@ -1,7 +1,7 @@
 console.info("loginHandler called")
 // const { MongoClient } = require("mongodb")
 
-module.exports.checkMongo = async function checkMongo(uname, passwd) {
+module.exports.checkMongo = async function checkMongo(uname, passwd, MongoClient) {
         const uri = `mongodb+srv://${uname}:${passwd}@projectdb.fzsksa1.mongodb.net/?retryWrites=true&w=majority`;
         const client = new MongoClient(uri);
         console.info("checkMongo touched")
