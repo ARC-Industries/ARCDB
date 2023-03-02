@@ -5,7 +5,7 @@ import ROUTES from "Constants/routes";
 import { Link } from "react-router-dom";
 import "./login.css";
 // import Userfront from "@userfront/core";
-import { checkMongo } from "Functions/loginHandler"
+// import { checkMongo } from "Functions/loginHandler"
 
 // Initialize Userfront Core JS
 // Userfront.init("test123");
@@ -40,11 +40,10 @@ class Login extends React.Component {
     event.preventDefault();
     // Reset the alert to empty
     this.setAlertMessage();
-    const checkLogin = checkMongo(this.state.Username, this.state.password, window.api.MongoConnect, window.api.MongoClose, window.api.MongoDBCommand);
-    if ( checkLogin === "authd"){
-      console.log("FUCKING WORKED")
+    if ( window.api.checkMongo(this.state.Username, this.state.password) === "authd"){
+      console.log("returned auth confirmation")
     } else {
-      console.info("returned", checkLogin)
+      console.info("returned: ", window.api.checkMongo(this.state.Username, this.state.password))
     }
     // Userfront.login({
     //   method: "password",
