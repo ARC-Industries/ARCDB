@@ -40,7 +40,12 @@ class Login extends React.Component {
     event.preventDefault();
     // Reset the alert to empty
     this.setAlertMessage();
-    console.log(checkMongo(this.state.Username, this.state.password, window.api.MongoClient(uri)))
+    const checkLogin = checkMongo(this.state.Username, this.state.password, window.api.MongoConnect, window.api.MongoClose, window.api.MongoDBCommand);
+    if ( checkLogin === "authd"){
+      console.log("FUCKING WORKED")
+    } else {
+      console.info("returned", checkLogin)
+    }
     // Userfront.login({
     //   method: "password",
     //   Username: this.state.Username,

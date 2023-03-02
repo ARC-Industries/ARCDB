@@ -1,10 +1,10 @@
 const { contextBridge, ipcRenderer } = require("electron");
 const fs = require("fs");
 const i18nextBackend = require("i18next-electron-fs-backend");
+const { MongoClient } = require("mongodb");
 const Store = require("secure-electron-store").default;
 const ContextMenu = require("secure-electron-context-menu").default;
 const SecureElectronLicenseKeys = require("secure-electron-license-keys");
-//const { MongoClient } = require("mongodb");
 
 // Create the electron store to be made available in the renderer process
 const store = new Store();
@@ -16,5 +16,14 @@ contextBridge.exposeInMainWorld("api", {
   store: store.preloadBindings(ipcRenderer, fs),
   contextMenu: ContextMenu.preloadBindings(ipcRenderer),
   licenseKeys: SecureElectronLicenseKeys.preloadBindings(ipcRenderer),
-  MongoClient: (uri) => ipcRenderer.invoke("MongoClient")
+  async MongoClose (uri) {
+    await new MongoClient(uri).close();
+  },
+  async MongoConnect (uri) {
+    await new MongoClient(uri).connect()
+  },
+  async MongoDBCommand (uri, db, command) {
+    await new MongoClient(uri).db(db).command(command);
+  }
+
 });

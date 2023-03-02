@@ -1,2 +1,2 @@
 get the login screen and mongo workign together
-get mongodb dependencies forwarded
+make mongo actually connect to the server BEFORE auth message

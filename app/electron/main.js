@@ -217,9 +217,6 @@ app.on("window-all-closed", () => {
     SecureElectronLicenseKeys.clearMainBindings(ipcMain);
   }
 });
-ipcMain.handle('MongoClient', (uri) => 
-    MongoClient(uri)
-)
 
 app.on("activate", () => {
   // On macOS it's common to re-create a window in the app when the
