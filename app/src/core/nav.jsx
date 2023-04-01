@@ -175,89 +175,90 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <nav
-        className="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation">
-        <div className="navbar-brand">
-          <a
-            role="button"
-            className={`navbar-burger ${
-              this.state.mobileMenuActive ? "is-active" : ""
-            }`}
-            data-target="navbarBasicExample"
-            aria-label="menu"
-            aria-expanded="false"
-            onClick={this.toggleMenu}>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div
-          id="navbarBasicExample"
-          className={`navbar-menu ${
-            this.state.mobileMenuActive ? "is-active" : ""
-          }`}>
-          <div className="navbar-start">
-            <a
-              className="navbar-item"
-              onClick={() => this.navigate(ROUTES.LOGIN)}>
-              Homer
-            </a>
+      <div>test haha</div>
+      //  <nav
+      //   className="navbar is-dark"
+      //   role="navigation"
+      //   aria-label="main navigation">
+      //   <div className="navbar-brand">
+      //     <a
+      //       role="button"
+      //       className={`navbar-burger ${
+      //         this.state.mobileMenuActive ? "is-active" : ""
+      //       }`}
+      //       data-target="navbarBasicExample"
+      //       aria-label="menu"
+      //       aria-expanded="false"
+      //       onClick={this.toggleMenu}>
+      //       <span aria-hidden="true"></span>
+      //       <span aria-hidden="true"></span>
+      //       <span aria-hidden="true"></span>
+      //     </a>
+      //   </div>
+      //   <div
+      //     id="navbarBasicExample"
+      //     className={`navbar-menu ${
+      //       this.state.mobileMenuActive ? "is-active" : ""
+      //     }`}>
+      //     <div className="navbar-start">
+      //       <a
+      //         className="navbar-item"
+      //         onClick={() => this.navigate(ROUTES.LOGIN)}>
+      //         Homer
+      //       </a>
 
-            <a
-              className="navbar-item"
-              onClick={() => this.navigate(ROUTES.ABOUT)}>
-              Marge
-            </a>
+      //       <a
+      //         className="navbar-item"
+      //         onClick={() => this.navigate(ROUTES.ABOUT)}>
+      //         Marge
+      //       </a> 
 
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Sample pages</a>
+      //       <div className="navbar-item has-dropdown is-hoverable">
+      //         <a className="navbar-link">Sample pages</a>
 
-              <div className="navbar-dropdown">
-                <a
-                  className="navbar-item"
-                  onClick={() => this.navigate(ROUTES.MOTD)}>
-                  Using the Electron store
-                </a>
-                <a
-                  className="navbar-item"
-                  onClick={() => this.navigate(ROUTES.LOCALIZATION)}>
-                  Changing locales
-                </a>
-                <a
-                  className="navbar-item"
-                  onClick={() => this.navigate(ROUTES.UNDOREDO)}>
-                  Undo/redoing actions
-                </a>
-                <a
-                  className="navbar-item"
-                  onClick={() => this.navigate(ROUTES.CONTEXTMENU)}>
-                  Custom context menu
-                </a>
-                <a
-                  className="navbar-item"
-                  onClick={() => this.navigate(ROUTES.IMAGE)}>
-                  Sample image loaded
-                </a>
-              </div>
-            </div>
-          </div>
-          {this.renderLicenseModal()}
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <a
-                  className="button is-light"
-                  onClick={this.toggleLicenseModal}>
-                  Check license
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      //         <div className="navbar-dropdown">
+      //           <a
+      //             className="navbar-item"
+      //             onClick={() => this.navigate(ROUTES.MOTD)}>
+      //             Using the Electron store
+      //           </a>
+      //           <a
+      //             className="navbar-item"
+      //             onClick={() => this.navigate(ROUTES.LOCALIZATION)}>
+      //             Changing locales
+      //           </a>
+      //           <a
+      //             className="navbar-item"
+      //             onClick={() => this.navigate(ROUTES.UNDOREDO)}>
+      //             Undo/redoing actions
+      //           </a>
+      //           <a
+      //             className="navbar-item"
+      //             onClick={() => this.navigate(ROUTES.CONTEXTMENU)}>
+      //             Custom context menu
+      //           </a>
+      //           <a
+      //             className="navbar-item"
+      //             onClick={() => this.navigate(ROUTES.IMAGE)}>
+      //             Sample image loaded
+      //           </a>
+      //         </div>
+      //       </div>
+      //     </div> 
+      //     {this.renderLicenseModal()}
+      //     <div className="navbar-end">
+      //       <div className="navbar-item">
+      //         <div className="buttons">
+      //           <a
+      //             className="button is-light"
+      //             onClick={this.toggleLicenseModal}>
+      //             Check license
+      //           </a>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </nav> 
     );
   }
 }

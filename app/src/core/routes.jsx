@@ -27,6 +27,9 @@ const ContextMenu = loadable(() =>
 const Image = loadable(() =>
   import(/* webpackChunkName: "ContextMenuChunk" */ "Pages/image/image")
 );
+const Test = loadable(() => {
+  import(/* webpackChunkName: "TestChunk" */ "Pages/home/test")
+});
 
 class AppRoutes extends React.Component {
   render() {    
@@ -39,6 +42,7 @@ class AppRoutes extends React.Component {
         <Route path={ROUTES.UNDOREDO} element={<UndoRedo />}></Route>
         <Route path={ROUTES.CONTEXTMENU} element={<ContextMenu />}></Route>
         <Route path={ROUTES.IMAGE} element={<Image />}></Route>
+        <Route path={ROUTES.HOME} element={<Test />}></Route>
       </Routes>
     );
   }

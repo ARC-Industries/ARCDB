@@ -5,5 +5,6 @@
   "LOCALIZATION": "/localization",
   "UNDOREDO": "/undoredo",
   "CONTEXTMENU": "/contextmenu",
-  "IMAGE": "/image"
+  "IMAGE": "/image",
+  "HOME": "/test"
 }

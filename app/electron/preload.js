@@ -5,7 +5,8 @@ const { MongoClient } = require("mongodb");
 const Store = require("secure-electron-store").default;
 const ContextMenu = require("secure-electron-context-menu").default;
 const SecureElectronLicenseKeys = require("secure-electron-license-keys");
-const { checkMongo } = require("../src/functions/loginHandler")
+const checkMongo = require("../src/functions/checkMongo")
+const db = require('../src/mongooseModels/mongooseIndex');
 
 // Create the electron store to be made available in the renderer process
 const store = new Store();
@@ -18,16 +19,7 @@ contextBridge.exposeInMainWorld("api", {
   contextMenu: ContextMenu.preloadBindings(ipcRenderer),
   licenseKeys: SecureElectronLicenseKeys.preloadBindings(ipcRenderer),
   async checkMongo (uname, passwd) {
-    await checkMongo(uname, passwd)
+    await checkMongo(uname, passwd, db)
   }
-  // async MongoClose (uri) {
-  //   await new MongoClient(uri).close();
-  // },
-  // async MongoConnect (uri) {
-  //   await new MongoClient(uri).connect()
-  // },
-  // async MongoDBCommand (uri, db, command) {
-  //   await new MongoClient(uri).db(db).command(command);
-  // }
 
 });

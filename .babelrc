@@ -12,7 +12,9 @@
                     "Redux": "./app/src/redux",
                     "Functions": "./app/src/functions",
                     "I18n": "./app/localization",
-                    "Images": "./resources/images"
+                    "Images": "./resources/images",
+                    "Models": "./app/src/mongooseModels",
+                    "db": "./jsonDB"
                 }
             },
             "@babel/plugin-syntax-dynamic-import"
