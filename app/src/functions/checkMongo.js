@@ -1,4 +1,4 @@
-module.exports = function qq(uname, passwd, db){
+module.exports = function checkMongo(uname, passwd, db){
     if (!db) {
         return console.info("example error message")
     }

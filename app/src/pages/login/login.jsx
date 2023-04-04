@@ -2,7 +2,7 @@ import React from "react";
 // import { MongoClient } from "mongodb";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ROUTES from "Constants/routes";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 // import Userfront from "@userfront/core";
 // import { checkMongo } from "Functions/loginHandler"
@@ -16,7 +16,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileMenuActive: false,
+      navd: false,
+      loggedIn: false,
       Username: "",
       password: "",
       alertMessage: "",
@@ -26,6 +27,7 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setAlertMessage = this.setAlertMessage.bind(this);
   }
+  navigate = useNavigate();
 
   handleInputChange(event) {
     event.preventDefault();
@@ -42,7 +44,10 @@ class Login extends React.Component {
     this.setAlertMessage();
     if ( window.api.checkMongo(this.state.Username, this.state.password)){
       console.log("returned auth confirmation");
-      redirect(ROUTES.HOME);
+      this.setState({
+        loggedIn: true
+      })
+      // this.navigate(ROUTES.HOME);
     } else {
       this.setAlertMessage('returned: ' + window.api.checkMongo(this.state.Username, this.state.password))
         console.info("returned: ", window.api.checkMongo(this.state.Username, this.state.password))
