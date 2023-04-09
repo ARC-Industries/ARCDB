@@ -1,12 +1,19 @@
-module.exports = function checkMongo(uname, passwd, db){
-    if (!db) {
-        return console.info("example error message")
-    }
+const fs = require("fs")
+const data = require('../../data/loginData.json')
+module.exports = function (uname, passwd){
+    let lc = null;
+    console.log("checkmongo touched")
     if (uname === "test" && passwd === "test"){
-        return true;
+        console.log(uname, "\n", passwd,"\ncorrect")
+        data.loggedIn = true;
     } else {
-        return false;
+        console.log(uname, "\n", passwd, "\n noLogin")
+        data.loggedIn = false;
     }
+    console.log(data.loggedIn)
+    jsonObj = JSON.stringify(data);
+    fs.writeFileSync('app/data/loginData.json', jsonObj);
+    return lc;
 }
 
 // db.mongoose

@@ -2,13 +2,10 @@ import React from "react";
 // import { MongoClient } from "mongodb";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ROUTES from "Constants/routes";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, navigate } from "react-router-dom";
 import "./login.css";
-// import Userfront from "@userfront/core";
-// import { checkMongo } from "Functions/loginHandler"
+import withRouter from "./withRouter";
 
-// Initialize Userfront Core JS
-// Userfront.init("test123");
 import Alert from "./errorHandler"
 
 class Login extends React.Component {
@@ -27,7 +24,6 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setAlertMessage = this.setAlertMessage.bind(this);
   }
-  navigate = useNavigate();
 
   handleInputChange(event) {
     event.preventDefault();
@@ -37,20 +33,19 @@ class Login extends React.Component {
     });
     console.info(target.name," : ", target.value)
   }
-
+    
   handleSubmit(event) {
     event.preventDefault();
     // Reset the alert to empty
     this.setAlertMessage();
-    if ( window.api.checkMongo(this.state.Username, this.state.password)){
-      console.log("returned auth confirmation");
-      this.setState({
-        loggedIn: true
-      })
-      // this.navigate(ROUTES.HOME);
+    window.api.checkMongo(this.state.Username, this.state.password)
+    if (window.db.data.loggedIn){
+      const { navigate } = this.props;
+      console.log("returned auth confirmation: ", window.db.data.loggedIn);
+      navigate(ROUTES.HOME)
     } else {
-      this.setAlertMessage('returned: ' + window.api.checkMongo(this.state.Username, this.state.password))
-        console.info("returned: ", window.api.checkMongo(this.state.Username, this.state.password))
+      this.setAlertMessage('returned: ' + window.db.data.loggedIn)
+      console.info("returned: ", window.db.data.loggedIn)
     }
   }
 
@@ -100,4 +95,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

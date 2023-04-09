@@ -7,6 +7,7 @@ const ContextMenu = require("secure-electron-context-menu").default;
 const SecureElectronLicenseKeys = require("secure-electron-license-keys");
 const checkMongo = require("../src/functions/checkMongo")
 const db = require('../src/mongooseModels/mongooseIndex');
+const data = require('../data/loginData.json')
 
 // Create the electron store to be made available in the renderer process
 const store = new Store();
@@ -23,3 +24,6 @@ contextBridge.exposeInMainWorld("api", {
   }
 
 });
+contextBridge.exposeInMainWorld('db', {
+  data: data
+})
