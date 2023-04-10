@@ -13,8 +13,7 @@
                     "Functions": "./app/src/functions",
                     "I18n": "./app/localization",
                     "Images": "./resources/images",
-                    "Models": "./app/src/mongooseModels",
-                    "db": "./jsonDB"
+                    "Models": "./app/src/mongooseModels"
                 }
             },
             "@babel/plugin-syntax-dynamic-import"

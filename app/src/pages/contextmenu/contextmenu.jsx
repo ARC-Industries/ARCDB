@@ -22,7 +22,7 @@ class ContextMenu extends React.Component {
     // of id "alert" is selected
     window.api.contextMenu.onReceive("loudAlert", function (args) {
       alert(
-        `This alert was brought to you by secure-electron-context-menu by ${args.attributes.name}`
+        `This is an alert`
       );
 
       // Note - we have access to the "params" object as defined here: https://www.electronjs.org/docs/api/web-contents#event-context-menu
@@ -38,7 +38,7 @@ class ContextMenu extends React.Component {
             <h1
               className="title is-1"
               cm-template="loudAlertTemplate"
-              cm-payload-name="reZach">
+              cm-payload-name="BgGmr">
               Context menu
             </h1>
             <div className="subtitle italic">Right-click the header above!</div>

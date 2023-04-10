@@ -2,18 +2,15 @@ import React from "react";
 // import { MongoClient } from "mongodb";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ROUTES from "Constants/routes";
-import { Link, navigate } from "react-router-dom";
 import "./login.css";
-import withRouter from "./withRouter";
-
 import Alert from "./errorHandler"
+import { Navigate } from "react-router";
 
 class Login extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      navd: false,
       loggedIn: false,
       Username: "",
       password: "",
@@ -40,12 +37,14 @@ class Login extends React.Component {
     this.setAlertMessage();
     window.api.checkMongo(this.state.Username, this.state.password)
     if (window.db.data.loggedIn){
-      const { navigate } = this.props;
       console.log("returned auth confirmation: ", window.db.data.loggedIn);
-      navigate(ROUTES.HOME)
+      this.setState({ loggedIn: true })
+
     } else {
-      this.setAlertMessage('returned: ' + window.db.data.loggedIn)
+
+      this.setAlertMessage('returned: ' + window.db.data.loggedIn + '\nIncorrect username/password')
       console.info("returned: ", window.db.data.loggedIn)
+
     }
   }
 
@@ -53,7 +52,7 @@ class Login extends React.Component {
     this.setState({ alertMessage: message });
   }
 
-
+  
   render() {
     return (
       <React.Fragment>
@@ -64,7 +63,7 @@ class Login extends React.Component {
               <h3 className="Auth-form-title">Login</h3>
             <div className="form-group mt-3">
               <label className="">
-                username
+                Username
               </label>
                   <input
                     name="Username"
@@ -75,7 +74,9 @@ class Login extends React.Component {
                   />
             </div>
             <div className="form-group mt-3">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              Password
+            </label>
               <input
                 name="password"
                 type="password"
@@ -91,8 +92,8 @@ class Login extends React.Component {
           </form>
         </div>
       </React.Fragment>
-    );
+      );
   }
 }
 
-export default withRouter(Login);
+export default Login;

@@ -17,7 +17,7 @@
     "dist-mac": "npm run test && npm run prod-build && electron-builder --mac",
     "dist-linux": "npm run prod-build && electron-builder --linux",
     "dist-windows": "npm run prod-build && electron-builder --windows",
-    "dist-all": "npm run test && npm run prod-build && electron-builder --mac --linux --windows",
+    "dist-all": "npm run test && npm run prod-build && electron-builder --linux --windows",
     "test": "mocha"
   },
   "build": {
@@ -57,20 +57,8 @@
     "type": "git",
     "url": "git+https://github.com/ARC-Industries/ARCDB.git"
   },
-  "keywords": [
-    "electron",
-    "security",
-    "secure",
-    "template",
-    "javascript",
-    "react",
-    "redux",
-    "webpack",
-    "i18n",
-    "boilerplate"
-  ],
   "author": "Gæmer",
-  "license": "MIT",
+  "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/ARC-Industries/ARCDB/issues"
   },

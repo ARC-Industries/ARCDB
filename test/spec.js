@@ -12,12 +12,13 @@ describe("Application launch", function () {
     this.app = new Application({
       // Your electron path can be any binary
       // i.e for OSX an example path could be '/Applications/MyApp.app/Contents/MacOS/MyApp'
+      // We won't be building for MacOS unless we find it necessary
       // But for the sake of the example we fetch it from our node_modules.
       path: electronPath,
 
       // Assuming you have the following directory structure
 
-      //  |__ my project
+      //  |__ ARCDB
       //     |__ ...
       //     |__ main.js
       //     |__ package.json
