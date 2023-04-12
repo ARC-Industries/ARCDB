@@ -1,9 +1,9 @@
 {
-  "LOGIN": "/",
+  "LOGIN": "/login",
   "MOTD": "/motd",
   "LOCALIZATION": "/localization",
   "UNDOREDO": "/undoredo",
   "CONTEXTMENU": "/contextmenu",
   "IMAGE": "/image",
-  "TEST": "/test"
+  "TEST": "/"
 }
