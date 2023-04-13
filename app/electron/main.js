@@ -53,6 +53,7 @@ async function createWindow() {
     width: 1600,
     height: 900,
     title: "Application is currently initializing...",
+    icon: 'resources/ARC_logo.png',
     webPreferences: {
       devTools: isDev,
       nodeIntegration: false,
