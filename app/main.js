@@ -3,8 +3,9 @@ const Task = require("./models/Task");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 500,
-    height: 700,
+    width: 700,
+    height: 500,
+    icon: 'resources/icon.png',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -12,7 +13,7 @@ function createWindow() {
     autoHideMenuBar: true,
   });
 
-  win.loadFile("app/index.html");
+  win.loadFile("app/testindex.html");
 }
 
 ipcMain.on("new-task", async (e, arg) => {

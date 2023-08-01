@@ -3,6 +3,7 @@ const { ipcRenderer } = require("electron");
 const taskForm = document.querySelector("#taskForm");
 const taskName = document.querySelector("#taskName");
 const taskDescription = document.querySelector("#taskDescription");
+const responsibleGroup = document.querySelector("#responsibleGroup")
 const taskList = document.querySelector("#taskList");
 
 let updateStatus = false;
@@ -22,6 +23,7 @@ function editTask(id) {
   const task = tasks.find((task) => task._id === id);
   taskName.value = task.name;
   taskDescription.value = task.description;
+  responsibleGroup.value = task.responsibleGroup;
 }
 
 function renderTasks(tasks) {
@@ -36,7 +38,13 @@ function renderTasks(tasks) {
               Task Name: ${t.name}
             </p>
             <p>
+              Responsible group: ${t.responsibleGroup}
+            </p>
+            <p>
               Task Description: ${t.description}
+            </p>
+            <p>
+              Date Created: ${t.creationDate}
             </p>
             <button class="btn btn-danger" onclick="deleteTask('${t._id}')">
               🗑 Delete
@@ -59,6 +67,7 @@ taskForm.addEventListener("submit", async (e) => {
   const task = {
     name: taskName.value,
     description: taskDescription.value,
+    responsibleGroup: responsibleGroup.value,
   };
 
   if (!updateStatus) {
@@ -74,7 +83,10 @@ ipcRenderer.on("new-task-created", (e, arg) => {
   console.log(arg);
   const taskSaved = JSON.parse(arg);
   tasks.push(taskSaved);
+
+  // this will log the updated data
   console.log(tasks);
+
   renderTasks(tasks);
   alert("Task Created Successfully");
   taskName.focus();

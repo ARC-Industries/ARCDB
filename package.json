@@ -16,9 +16,6 @@
     "directories": {
       "buildResources": "resources"
     },
-    "extraFiles": [
-      "public.key"
-    ],
     "win": {
       "target": [
         "nsis",
@@ -29,8 +26,8 @@
       "target": [
         "deb",
         "rpm",
-        "snap",
-        "AppImage"
+        "AppImage",
+        "pacman"
       ],
       "maintainer": "Ryan Kotzé"
     }
@@ -50,6 +47,7 @@
   ],
   "dependencies": {
     "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
     "mongoose": "^6.1.4"
   },
   "devDependencies": {
