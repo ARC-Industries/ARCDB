@@ -28,7 +28,7 @@ input, textarea {
 }
 
 .card {
-  background: #358EC8;
+  background: #256b99;
   border: 4px solid #333;
   border-radius: 4px;
   margin: 4px;
@@ -71,10 +71,41 @@ input, textarea {
 }
 
 .mainMenu {
-  background-color: #358EC8;
+  width: 200px; /* Set a width if you like */
+  margin: auto;
   margin-top: 15%;
-  padding: 50px;
-  border: 4px solid #333;
-  margin-right: 2%;
-  margin-left: 2%;
+  transform: scale(1.5);
+}
+
+.mainMenu a {
+  background-color: #256b99;  /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 16px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+  text-align: center;
+  font-weight: 420;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 30px;
+}
+
+.mainMenu a:hover {
+  background-color: #121212; /* Dark grey background on mouse-over */
+  color: azure;
+}
+
+.mainMenu a.active {
+  background-color: #04AA6D; /* Add a green color to the "active/current" link */
+  color: white;
+}
+
+h1{
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: 3%;
+}
+
+h2{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:#161616;
 }
