@@ -1,17 +1,10 @@
 1. Make login screen actually authenticate with MongoDB
-2. Create necessary pages
-3. Try to find MongoDB Compass source code for resource usage page
-4. Test on Windows
-5. Fix Debian installation package
-6. Create Arch Linux installation package
-7. .deb package is broken which means the RPM, Snap and AppImage packages are broken too. Fix it
-8. Fix license
-9. Improve README file
-10. Ensure the application is safe
-11. Get Dev to actually commit to the app
-12. Add translations
-13. Add more build targets for Linux distributions
-14. Improve code efficiency
-15. Remove unnecessary comments     <!--- absolutely --->
-16. Add useful comments
-17. make login screen work or scrap it
+2. Test on Windows
+3. Improve README file
+4. Ensure the application is safe
+5. Add translations
+6. Add more build targets for Linux distributions
+7. Improve code efficiency
+8. Remove unnecessary comments     <!--- absolutely --->
+9. Add useful comments
+10. make login screen work or scrap it
