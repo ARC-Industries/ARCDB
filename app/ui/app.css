@@ -87,6 +87,7 @@ input, textarea {
   font-weight: 420;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 30px;
+  border-radius: 5px;
 }
 
 .mainMenu a:hover {
