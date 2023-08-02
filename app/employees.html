@@ -1,7 +1,30 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>ArcDB - Employees</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCDB - Projects</title>
+  <link rel="stylesheet" href="ui/app.css">
 </head>
+
 <body>
-    <h1>employees</h1>
+  <h1>hello. access</h1>
+
+  <form id="employeeForm" class="card">
+    <input type="text" id="employeeName" placeholder="Employee Name" maxlength="16" required autofocus>
+    <input type="text" id="employeeSurname" placeholder="Employee Last Name" maxlength="10" required autofocus>
+    <input type="text" id="employeeGroup" placeholder="Employee Group" maxlength="12" required autofocus>
+    <input type="text" id="employeeEmployer" placeholder="Employer" maxlength="16" required autofocus>
+    <button type="submit" class="btn btn-secondary">
+      Save
+    </button>
+  </form>
+
+  <!-- Task List -->
+  <ul id="employeeList"></ul>
+
+  <script src="ui/employeeApps.js"></script>
 </body>
+
+</html>

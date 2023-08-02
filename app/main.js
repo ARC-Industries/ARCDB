@@ -1,5 +1,6 @@
 const { BrowserWindow, ipcMain } = require("electron");
 const Task = require("./models/Task");
+const Employee = require("./models/Employee")
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -16,6 +17,7 @@ function createWindow() {
   win.loadFile("app/index.html");
 }
 
+// regular DB tasks
 ipcMain.on("new-task", async (e, arg) => {
   const newTask = new Task(arg);
   const taskSaved = await newTask.save();
@@ -36,10 +38,38 @@ ipcMain.on("update-task", async (e, args) => {
   console.log(args);
   const updatedTask = await Task.findByIdAndUpdate(
     args.idTaskToUpdate,
-    { name: args.name, description: args.description },
+    { name: args.name, description: args.description, responsibleGroup: args.responsibleGroup },
     { new: true }
   );
   e.reply("update-task-success", JSON.stringify(updatedTask));
+});
+
+// employee DB tasks
+ipcMain.on("new-employee", async (e, arg) => {
+  const newEmployee = new Employee(arg);
+  const employeeSaved = await newEmployee.save();
+
+  e.reply("new-employee-created", JSON.stringify(employeeSaved));
+});
+
+ipcMain.on("get-employees", async (e, arg) => {
+  const employees = await Employee.find();
+  e.reply("got-employees", JSON.stringify(employees));
+});
+
+ipcMain.on("delete-employee", async (e, args) => {
+  const employeeDeleted = await Employee.findByIdAndDelete(args);
+  e.reply("delete-employee-success", JSON.stringify(employeeDeleted));
+});
+
+ipcMain.on("update-employee", async (e, args) => {
+  console.log(args);
+  const updatedEmployee = await Employee.findByIdAndUpdate(
+    args.idEmployeeToUpdate,
+    { name: args.name, surname: args.surname, group: args.group, employer: args.employer },
+    { new: true }
+  );
+  e.reply("update-employee-success", JSON.stringify(updatedEmployee));
 });
 
 module.exports = { createWindow };
