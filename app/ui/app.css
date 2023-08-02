@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   color: #dfe6e9;
   background: linear-gradient(to bottom right, #040404, #080808, #121212, #161616);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 10px;
 }
 

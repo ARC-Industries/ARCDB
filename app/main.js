@@ -13,7 +13,7 @@ function createWindow() {
     autoHideMenuBar: true,
   });
 
-  win.loadFile("app/testindex.html");
+  win.loadFile("app/index.html");
 }
 
 ipcMain.on("new-task", async (e, arg) => {
