@@ -76,7 +76,30 @@ input, textarea {
   margin-top: 15%;
   transform: scale(1.5);
 }
+.loginscr {
+  align-items: center;
+  border-radius:5px;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+.loginscr input {
+  font-size: 15px;
+  margin-top:10px;
+  border-radius:5px;
+  width: 150px;
+}
 
+.loginscr button {
+  margin-top: 10px;
+  font-size: 15px;
+  border-radius:5px;
+  width: 100px;
+}
+
+.loginscr-secondary {
+  margin-top: 1000px;
+}
 .mainMenu a {
   background-color: #256b99;
   color: black;

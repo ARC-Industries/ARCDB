@@ -24,9 +24,7 @@
     },
     "linux": {
       "target": [
-        "deb",
-        "rpm",
-        "AppImage",
+        
         "pacman"
       ],
       "maintainer": "Ryan Kotzé"

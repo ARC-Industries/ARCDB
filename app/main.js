@@ -1,9 +1,10 @@
 const { BrowserWindow, ipcMain } = require("electron");
 const Task = require("./models/Task");
-const Employee = require("./models/Employee")
+const Employee = require("./models/Employee");
+const { isLoggedIn } = require("./loginHandler");
 
 function createWindow() {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 700,
     height: 500,
     icon: 'resources/icon.png',
@@ -14,7 +15,7 @@ function createWindow() {
     autoHideMenuBar: true,
   });
 
-  win.loadFile("app/index.html");
+  win.loadFile("app/login.html");
 }
 
 // regular DB tasks
@@ -71,5 +72,27 @@ ipcMain.on("update-employee", async (e, args) => {
   );
   e.reply("update-employee-success", JSON.stringify(updatedEmployee));
 });
+
+
+ipcMain.on("logged-in-request", (e, args) => {
+  const loggedIn = isLoggedIn()
+  if (loggedIn) {
+    // for verbosity's sake
+    console.log(loggedIn, "\nwas true")
+
+    // tells the frontend that we are logged in
+    e.reply("logged-in")
+  } else {
+    // tells the frontend that we are not logged in
+    e.reply("not-logged")
+
+    // verbosity's sake
+    console.log(loggedIn, "\nwas false")
+  }
+})
+
+ipcMain.on("goto-index", (e, arg) => {
+  win.loadFile("app/index.html")
+})
 
 module.exports = { createWindow };
