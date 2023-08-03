@@ -5,13 +5,13 @@ const employeeName = document.querySelector("#employeeName");
 const employeeSurname = document.querySelector("#employeeSurname");
 const employeeGroup = document.querySelector("#employeeGroup")
 const employeeList = document.querySelector("#employeeList");
-const employer = document.querySelector('#employer')
+const employeeEmployer = document.querySelector('#employeeEmployer')
 
 let updateStatus = false;
 let idEmployeeToUpdate = "";
 
 function deleteEmployee(id) {
-  const response = confirm("are you sure you want to unemploy them?");
+  const response = confirm("are you sure you want to delete it?");
   if (response) {
     ipcRenderer.send("delete-employee", id);
   }
@@ -23,9 +23,9 @@ function editEmployee(id) {
   idEmployeeToUpdate = id;
   const employee = employees.find((employee) => employee._id === id);
   employeeName.value = employee.name;
-  employeeSurname.value = employee.surname
+  employeeSurname.value = employee.surname;
   employeeGroup.value = employee.group;
-  employer.value = employee.employer;
+  employeeEmployer.value = employee.employer
 }
 
 function renderEmployees(employees) {
@@ -37,10 +37,7 @@ function renderEmployees(employees) {
               Employee id: ${t._id}
             </h4>
             <p>
-              First Name: ${t.name}
-            </p>
-            <p>
-              Last Name: ${t.surname}
+              Employee Name: ${t.name}
             </p>
             <p>
               Group: ${t.group}
@@ -52,7 +49,7 @@ function renderEmployees(employees) {
               Date Employed: ${t.dateEmployed}
             </p>
             <button class="btn btn-danger" onclick="deleteEmployee('${t._id}')">
-              🗑 Unemploy
+              🗑 Delete
             </button>
             <button class="btn btn-secondary" onclick="editEmployee('${t._id}')">
               ✎ Edit
@@ -68,12 +65,11 @@ ipcRenderer.send("get-employees");
 
 employeeForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const employee = {
     name: employeeName.value,
     surname: employeeSurname.value,
     group: employeeGroup.value,
-    employer: employer
+    employer: employeeEmployer.value,
   };
 
   if (!updateStatus) {
@@ -98,7 +94,7 @@ ipcRenderer.on("new-employee-created", (e, arg) => {
   employeeName.focus();
 });
 
-ipcRenderer.on("get-employees", (e, args) => {
+ipcRenderer.on("got-employees", (e, args) => {
   const receivedEmployees = JSON.parse(args);
   employees = receivedEmployees;
   renderEmployees(employees);
@@ -120,7 +116,6 @@ ipcRenderer.on("update-employee-success", (e, args) => {
     if (t._id === updatedEmployee._id) {
       t.name = updatedEmployee.name;
       t.surname = updatedEmployee.surname;
-      t.group = updatedEmployee.group;
     }
     return t;
   });
