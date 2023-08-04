@@ -33,7 +33,7 @@ if (os.type() === "Linux") {
     var loginData = require(path.join(confDir, "data.json"))
 } else if (os.type() === "Windows_NT") {
     // process.env.APPDATA
-    var confDir = process.env.APPDATA + "\\Roaming\\arcdb\\confs"
+    var confDir = process.env.APPDATA + "\\arcdb\\confs"
 
     if (!fs.existsSync(confDir + "\\data.json")) {
         var content = JSON.stringify(data);
@@ -103,7 +103,7 @@ async function handleLogin(functionData) {
                 loginData.uname = functionData.uname;
                 loginData.passwd = functionData.passwd;
                 var writeString = JSON.stringify(functionData);
-                fs.writeFileSync(confDir, writeString)
+                fs.writeFileSync(path.join(confDir, "data.json"), writeString)
                 success = true;
             }
         })
