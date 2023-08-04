@@ -15,7 +15,7 @@ let data = {uname: null, passwd: null}
 
 // checks the operating system that we are runnig from
 if (os.type() === "Linux") {
-    var confDir = path.join(os.homedir(), ".config/arcdb/confs/data.json")
+    var confDir = path.join(os.homedir(), ".config/arcdb/confs/")
     
     // checks if the necessary directories are present (Linux)
     if (!fs.existsSync(confDir)) {
@@ -30,15 +30,17 @@ if (os.type() === "Linux") {
     }
 
     // assigns the data from the file
-    var loginData = require(confDir)
+    var loginData = require(path.join(confDir, "data.json"))
 } else if (os.type() === "Windows_NT") {
     // process.env.APPDATA
-    var confDir = process.env.APPDATA + "\\arcdb\\confs\\data.json"
+    var confDir = process.env.APPDATA + "\\Roaming\\arcdb\\confs"
 
-    if (!fs.existsSync(confDir)) {
+    if (!fs.existsSync(confDir + "\\data.json")) {
         var content = JSON.stringify(data);
-        fs.writeFileSync(confDir, content)
+        fs.mkdirSync(confDir, { recursive: true })
+        fs.writeFileSync(confDir + "\\data.json", content)
     }
+    var loginData = require(confDir + "\\data.json")
     // need to work on this
 } else {
     // we will not be setting up for mac users
