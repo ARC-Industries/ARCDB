@@ -97,7 +97,6 @@ async function handleLogin(functionData) {
         })
         
     } else {
-        console.log(functionData)
         await connectDB(functionData.uname, functionData.passwd, false).then((f) => {
             if (!f) {
                 loginData.uname = functionData.uname;
