@@ -1,7 +1,7 @@
 const { BrowserWindow, ipcMain } = require("electron");
 const Task = require("./models/Task");
 const Employee = require("./models/Employee");
-const { isLoggedIn } = require("./loginHandler");
+const { isLoggedIn, handleLogin, loginData } = require("./loginHandler");
 
 function createWindow() {
   win = new BrowserWindow({
@@ -46,6 +46,11 @@ ipcMain.on("update-task", async (e, args) => {
 });
 
 // employee DB tasks
+ipcMain.on("get-rank", async (e, arg) => {
+  const rank = await Employee.findOne({ username: loginData.uname });
+  e.reply("got-rank", JSON.stringify(rank));
+});
+
 ipcMain.on("new-employee", async (e, arg) => {
   const newEmployee = new Employee(arg);
   const employeeSaved = await newEmployee.save();
@@ -74,25 +79,33 @@ ipcMain.on("update-employee", async (e, args) => {
 });
 
 
-ipcMain.on("logged-in-request", (e, args) => {
-  const loggedIn = isLoggedIn()
+ipcMain.on("logged-in-request", async (e, args) => {
+  var loggedIn =  await isLoggedIn()
   if (loggedIn) {
     // for verbosity's sake
-    console.log(loggedIn, "\nwas true")
+    // console.log(loggedIn, "\nwas true")
 
     // tells the frontend that we are logged in
-    e.reply("logged-in")
+    win.loadFile("app/index.html")
   } else {
     // tells the frontend that we are not logged in
     e.reply("not-logged")
 
     // verbosity's sake
-    console.log(loggedIn, "\nwas false")
+    // console.log(loggedIn, "\nwas false")
   }
 })
 
-ipcMain.on("goto-index", (e, arg) => {
-  win.loadFile("app/index.html")
+ipcMain.on("login-data", async (e, arg) => {
+  var handled = await handleLogin(arg);
+  if (!handled) {
+    console.log(handled)
+    e.reply("login-failed");
+  } else {
+    console.log(handled, "\nlogged in ")
+    win.loadFile("app/index.html")
+    e.reply("logged-in")
+  }
 })
 
 module.exports = { createWindow };

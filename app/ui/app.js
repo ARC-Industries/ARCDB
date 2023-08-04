@@ -5,6 +5,7 @@ const taskName = document.querySelector("#taskName");
 const taskDescription = document.querySelector("#taskDescription");
 const responsibleGroup = document.querySelector("#responsibleGroup")
 const taskList = document.querySelector("#taskList");
+const greetingThing = document.getElementById("greetingThing");
 
 let updateStatus = false;
 let idTaskToUpdate = "";
@@ -57,9 +58,15 @@ function renderTasks(tasks) {
   });
 }
 
+function renderGreeting(greeting) {
+  // alert(greeting.rank)
+  greetingThing.innerHTML = "Greetings, a";
+}
+
 let tasks = [];
 
 ipcRenderer.send("get-tasks");
+ipcRenderer.send("get-rank")
 
 taskForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -78,6 +85,12 @@ taskForm.addEventListener("submit", async (e) => {
 
   taskForm.reset();
 });
+
+ipcRenderer.on("got-rank", (e, arg) => {
+  // alert("something")
+  // const receivedData = JSON.parse(arg);
+})
+renderGreeting("")
 
 ipcRenderer.on("new-task-created", (e, arg) => {
   console.log(arg);
@@ -114,6 +127,7 @@ ipcRenderer.on("update-task-success", (e, args) => {
     if (t._id === updatedTask._id) {
       t.name = updatedTask.name;
       t.description = updatedTask.description;
+      t.responsibleGroup = updatedTask.responsibleGroup;
     }
     return t;
   });

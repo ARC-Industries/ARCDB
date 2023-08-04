@@ -5,7 +5,9 @@ const employeeName = document.querySelector("#employeeName");
 const employeeSurname = document.querySelector("#employeeSurname");
 const employeeGroup = document.querySelector("#employeeGroup")
 const employeeList = document.querySelector("#employeeList");
-const employeeEmployer = document.querySelector('#employeeEmployer')
+const employeeEmployer = document.querySelector('#employeeEmployer');
+const employeeRank = document.querySelector('#employeeRank');
+const employeeUsername = document.querySelector('#employeeUsername');
 
 let updateStatus = false;
 let idEmployeeToUpdate = "";
@@ -25,7 +27,9 @@ function editEmployee(id) {
   employeeName.value = employee.name;
   employeeSurname.value = employee.surname;
   employeeGroup.value = employee.group;
-  employeeEmployer.value = employee.employer
+  employeeEmployer.value = employee.employer;
+  employeeRank.value = employee.rank;
+  employeeUsername.value = employee.username;
 }
 
 function renderEmployees(employees) {
@@ -41,6 +45,9 @@ function renderEmployees(employees) {
             </p>
             <p>
               Group: ${t.group}
+            </p>
+            <p>
+              Rank: ${t.rank}
             </p>
             <p>
               Employer: ${t.employer}
@@ -70,6 +77,8 @@ employeeForm.addEventListener("submit", async (e) => {
     surname: employeeSurname.value,
     group: employeeGroup.value,
     employer: employeeEmployer.value,
+    username: employeeUsername.value,
+    rank: employeeRank.value,
   };
 
   if (!updateStatus) {
@@ -116,6 +125,11 @@ ipcRenderer.on("update-employee-success", (e, args) => {
     if (t._id === updatedEmployee._id) {
       t.name = updatedEmployee.name;
       t.surname = updatedEmployee.surname;
+      t.group = updatedEmployee.group;
+      t.employer = updatedEmployee.employer;
+      t.username = updatedEmployee.username;
+      t.rank = updatedEmployee.rank;
+
     }
     return t;
   });

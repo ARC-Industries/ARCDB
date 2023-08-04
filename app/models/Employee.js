@@ -21,6 +21,14 @@ const newEmployeeSchema = new Schema({
     maxLength: 16,
     required: true,
   },
+  rank: {
+    type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
   dateEmployed: {
     type: Date,
     default: Date.now,
