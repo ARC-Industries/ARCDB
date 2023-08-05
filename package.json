@@ -1,6 +1,6 @@
 {
   "name": "arcdb",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "private": true,
   "main": "app/index.js",
@@ -24,7 +24,9 @@
     },
     "linux": {
       "target": [
-        
+        "deb",
+        "rpm",
+        "AppImage",
         "pacman"
       ],
       "maintainer": "Ryan Kotzé"
